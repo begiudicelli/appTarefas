@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(private userService: UsuariosService , private router: Router) {}
 
   navigateTologin() {
-    this.router.navigate(['/tarefas']);
+    this.router.navigate(['/login']);
   }
 
   navigateToregister() {
