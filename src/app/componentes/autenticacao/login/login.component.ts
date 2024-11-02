@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UsuariosService } from '../../../servicos/autenticacao/usuarios.service'; 
+import { AuthService } from '../AuthService';
+
 
 @Component({
   selector: 'app-login',
@@ -12,10 +14,10 @@ import { UsuariosService } from '../../../servicos/autenticacao/usuarios.service
 })
 
 export class LoginComponent {
-  public email: string = "";
-  public password: string = "";
+  email: string = "";
+  password: string = "";  
 
-  constructor(private userService: UsuariosService , private router: Router) {}
+  constructor(private userService: UsuariosService , private router: Router, private authService: AuthService) {}
 
   navigateTologin() {
     this.router.navigate(['/login']);
@@ -30,7 +32,9 @@ login() {
     next: user => {
       if (user) {
         alert("Login bem-sucedido!");
+        this.authService.setLoggedIn(true);
         this.router.navigate(['/tarefas']);
+        history.replaceState({}, '');
       } else {
         alert("Credenciais inválidas. Tente novamente.");
       }

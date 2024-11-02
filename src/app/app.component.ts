@@ -1,16 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from "./componentes/autenticacao/login/login.component";
-import { RegistrarComponent } from "./componentes/autenticacao/registrar/registrar.component";
 import { HeaderComponent } from "./componentes/header/header.component";
+import { LoggedHeaderComponent } from "./componentes/logged-header/logged-header.component";
+import { CommonModule } from '@angular/common';
+import { AuthService } from './componentes/autenticacao/AuthService';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, RegistrarComponent, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, LoggedHeaderComponent, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'appTarefas';
+export class AppComponent implements OnInit {
+  isLoggedIn: boolean = false;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.loggedIn$.subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn;
+    });
+        
+    this.isLoggedIn = this.authService.getLoggedInStatus();
+  }
 }
