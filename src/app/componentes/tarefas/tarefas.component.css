@@ -1,0 +1,34 @@
+.centered-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.task-manager-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 680px;
+    
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+
+    background: #d4a2c7;
+    padding: 42px;
+
+}
+
+.task-list-container{
+    display: flex;
+    flex-grow: 1;
+
+    background: #994b94;
+}
+
