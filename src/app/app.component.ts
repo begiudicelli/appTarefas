@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.authService.loggedIn$.subscribe(loggedIn => {
       this.isLoggedIn = loggedIn;
     });
-        
+    
     this.isLoggedIn = this.authService.getLoggedInStatus();
   }
 }
