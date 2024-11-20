@@ -1,9 +1,13 @@
+
+@import 'main-styles.scss';
+
 .centered-content{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
+    padding: 100px;
 }
 
 .task-manager-container {
@@ -12,7 +16,7 @@
     height: 100%;
     max-width: 1000px;
     max-height: 680px;
-    
+        
 }
 
 .sidebar {
@@ -20,15 +24,95 @@
     flex-direction: column;
     width: 250px;
 
-    background: #d4a2c7;
+     background: #d4a2c7; /*nao esta colorindo o fundo */
     padding: 42px;
 
+    /* arredondar as bordas */
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
 .task-list-container{
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
 
-    background: #994b94;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    
+    padding: 42px;
+
+    /* background: #994b94;  deveria colorir o fundo, mas ate o momento nao faz nada*/ 
 }
 
+.title{
+    font-family: 'Lato';
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.list-menu{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    flex-grow: 1;
+}
+
+.list-menu-item{
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+
+    border-radius: 5px;
+    width: 100%;
+    color: #5f5f5f;
+    margin-bottom: 5px;
+
+    /* cor de hover dos botoes */
+    &:hover{
+      background: #994b94;  
+    }
+
+    /* mudar a cor do backgroun ao passar por cima dos botoes */
+    &.is-active{
+        background-color: #cff8ef;
+        color: #994b94;
+    }
+}
+
+/* os botoes das tarefas */
+.task{
+    background: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+
+    /* animacao para os botoes e das linhas de tarefas*/
+
+    /* aqui estou deixando apenas interacao com o que nao esta completo*/
+    &:not(.complete){
+
+        cursor: pointer;
+        /* animacao para criar uma sombra ao passar em cima do botao e ao clicar no botao (animacao suavizada)*/
+        
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+    
+    /* animacao ao clicar no botao */
+        &:active {
+            transform: scale(0.95);
+        }
+    
+        /* animacao ao passar por cima do botao */
+        &:hover{
+            box-shadow: 0 0 0 5px #eeeeee;
+        }
+
+    }
+    
+    /* mudando a cor para tarefas completas e deixando com menos destaque*/
+    &.complete{
+        text-decoration: line-through;
+        opacity: 0.8;
+    }
+}

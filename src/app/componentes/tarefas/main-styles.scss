@@ -1,0 +1,17 @@
+// This is where we put global styles ans change variables valus
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:400,700|Nunito:400,700');
+
+$light-purple: #d4a2c7;
+$dark-purple: #994b94;
+
+$light: #d4a2c7;
+
+//update Bulmas global variables
+$family-sans-serif: "Nunito", sans-serif;
+
+
+//update some of bulmas component variables
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
