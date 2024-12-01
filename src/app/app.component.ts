@@ -5,6 +5,7 @@ import { LoggedHeaderComponent } from "./componentes/logged-header/logged-header
 import { CommonModule } from '@angular/common';
 import { AuthService } from './componentes/autenticacao/AuthService';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

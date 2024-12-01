@@ -9,6 +9,7 @@ import { AboutComponent } from './componentes/about/about.component';
 import { AdicionarComponent } from './componentes/adicionar/adicionar.component';
 import { EstatisticasComponent } from './componentes/estatisticas/estatisticas.component';
 
+
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'registrar', component: RegistrarComponent },
