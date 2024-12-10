@@ -43,7 +43,15 @@
     
     padding: 42px;
 
-    /* background: #994b94;  deveria colorir o fundo, mas ate o momento nao faz nada*/ 
+
+    .top-bar  {
+        display: flex;
+        margin-bottom: 20px;
+       .title {
+        flex-grow: 1;
+        margin: 0;
+       } 
+    }
 }
 
 .title{
@@ -84,10 +92,14 @@
 
 /* os botoes das tarefas */
 .task{
+    display: flex;
     background: white;
     padding: 15px 20px;
     border-radius: 5px;
     margin-top: 10px;
+
+    
+    align-items: center;
 
     /* animacao para os botoes e das linhas de tarefas*/
 
@@ -107,14 +119,31 @@
         /* animacao ao passar por cima do botao */
         &:hover{
             box-shadow: 0 0 0 5px #eeeeee;
+
+            .task-buttons{
+                
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
     }
     
     /* mudando a cor para tarefas completas e deixando com menos destaque*/
-    &.complete{
+    &.completed {
         text-decoration: line-through;
         opacity: 0.8;
+    }
+
+    .task-text{
+        flex-grow: 1;
+        display: flex;
+    }
+
+    .task-buttons {
+        transition: opacity 0.2s, transform 0.2s;
+        opacity: 0;
+        transform: scale(0.5);
     }
 }
 

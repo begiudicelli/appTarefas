@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../../task.service';
 import { Router } from '@angular/router';
+import { List } from '../../../Models/list.model';
 
 @Component({
   selector: 'app-new-list',
@@ -15,11 +16,11 @@ export class NewListComponent {
   constructor(private taskService: TaskService, private router: Router ) { }
 
   createList(title: string){
-    this.taskService.createList(title).subscribe((response: any) => {
-      console.log(response)
+    this.taskService.createList(title).subscribe((list: any) => {
+      console.log(list);
 
       //navegacao para /lists/response._id
-      this.router.navigate(['/lists', response._id]);
+      this.router.navigate(['/lists', list._id]);
       
     });
   }

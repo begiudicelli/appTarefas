@@ -1,39 +1,81 @@
 <div class="centered-content">
-    <div class="task-manager-container">
-        <div class="sidebar has-background-purple">
-            <h1 class="title has-text-primary">
-                Lista
-            </h1>
+  <div class="task-manager-container">
+    <div class="sidebar has-background-purple">
+      <h1 class="title ">
+        Lista
+      </h1>
 
-            <div class="list-menu">
-                           
-                <a class="list-menu-item" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
-                    <p>{{ list.title }}</p>
-                </a>
+      <div class="list-menu">
+
+        <a class="list-menu-item" *ngFor="let list of lists" [routerLink]="['/lists', list._id]"
+          routerLinkActive="is-active">
+          <p>{{ list.title }}</p>
+        </a>
 
 
-            </div>
+      </div>
 
-            <button class="button is-primary has-text-white" (click)="navigateToNewList()" >+ Nova Lista</button>
+      <button class="button is-primary has-text-white" (click)="navigateToNewList()">+ Nova Lista</button>
 
-        </div>
-
-        <div class="task-list-container has-background-light">
-            <h1 class="title has-text-primary">
-                Tarefas
-            </h1>
-
-            <!-- Elementos da Tarefa -->
-
-            <div class="task" *ngFor="let task of tasks">
-                <p>{{ task.title }}</p>
-            </div>
-          
-           <button class="circle-add-button button is-primary">
-            <!-- <img src="../../../../public/assets/img/plus.png" href="https://www.flaticon.com/free-icons/plus"> -->
-           
-           </button>
-
-        </div>
     </div>
+
+    <div class="task-list-container has-background-light">
+      <div class="top-bar">
+        <h1 class="title ">
+          Tarefas
+        </h1>
+
+        <div class="dropdown is-right is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true">
+              <span>Configurações</span>
+              <span class="icon is-small  ">
+                <i class="fas fa-info-circle" aria-hidden="true">
+                </i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <div class="dropdown-content">
+                <a routerLink="/edit-list/:listId" class="dropdown-item"> Editar </a>
+                <a (click)="onDeleteListClick()" class="dropdown-item has-text-danger"> Deletar </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Elementos da Tarefa -->
+
+      <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)"
+        [ngClass]="{ 'completed': task.completed }">
+        <div class="task-text">
+          <p>{{ task.title }}</p>
+
+        </div>
+        <div class="task-buttons">
+
+          <div class="field is-grouped is-small">
+            <p class="control">
+              <button class="button is-link" routerLink="/lists/:listId/edit-task/:taskId"> Editar</button>
+            </p>
+            <p class="control">
+              <button class="button is-danger" (click)="onTaskDeleteClick(task._id)">Deletar</button>
+            </p>
+
+          </div>
+        </div>
+
+
+      </div>
+
+      <button class="circle-add-button button is-primary">
+        <img routerLink="./new-task" src="../../../../public/assets/img/plus.png" alt="botao adicionar"
+          href="https://www.flaticon.com/free-icons/plus">
+      </button>
+
+    </div>
+  </div>
 </div>

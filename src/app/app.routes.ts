@@ -11,6 +11,8 @@ import { EstatisticasComponent } from './componentes/estatisticas/estatisticas.c
 import { NewListComponent } from './componentes/pages/new-list/new-list.component';
 import { NewTaskComponent } from './componentes/pages/new-task/new-task.component';
 import { NgModule } from '@angular/core';
+import { EditListComponent } from './componentes/pages/edit-list/edit-list.component';
+import { EditTaskComponent } from './componentes/pages/edit-task/edit-task.component';
 
 
 
@@ -25,9 +27,11 @@ export const routes: Routes = [
     { path: 'estatisticas', component: EstatisticasComponent},
     { path: '', component: HomeComponent},
     { path: 'new-list', component: NewListComponent },
+    { path: 'edit-list/:listId', component: EditListComponent },
     { path: 'lists', component: TarefasComponent},
     { path: 'lists/:listId', component: TarefasComponent},
-    { path: 'lists/:listsId/new-task', component: NewTaskComponent },
+    { path: 'lists/:listId/new-task', component: NewTaskComponent },
+    { path: 'lists/:listId/edit-task/:taskId', component: EditTaskComponent },
     { path: '', redirectTo: 'lists', pathMatch: 'full'}
 ];
 
